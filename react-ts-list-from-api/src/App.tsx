@@ -2,6 +2,9 @@ import React, { useState } from "react";
 //import './App.css';
 import {TodoList} from './components/ToDoList';
 import { AddTodoForm } from './components/AddTodoForm';
+import ButtonAppBar from "./components/AppBar";
+import SignIn from "./components/Login";
+import SignUp from "./components/Register";
 
 
 const initialTodos: Todo[] = [
@@ -41,6 +44,9 @@ function App() {
 
   return (
     <>
+      <ButtonAppBar></ButtonAppBar>
+      <SignIn></SignIn>
+      <SignUp></SignUp>
       <AddTodoForm addTodo={addTodo}></AddTodoForm>
       <TodoList initialTodos={todos} toggleTodo={toggleTodo}></TodoList>
     </>
