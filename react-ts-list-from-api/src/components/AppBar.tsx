@@ -32,7 +32,7 @@ export default function ButtonAppBar() {
 
   const userLink = (
     <div>
-      <Button component={Link} to="/todos"> Todos </Button>
+      <Button component={Link} to="/todo"> Todos </Button>
       <Button onClick={logOut}> Logout </Button>
     </div>
   )
@@ -43,7 +43,6 @@ export default function ButtonAppBar() {
       <Button component={Link} to="/register" color="inherit"> Register </Button>
     </div>
   )
-
 
   return (
     <div className={classes.root}>

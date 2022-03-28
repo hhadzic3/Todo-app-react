@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import {TodoListItem} from "./TodoListItem";
 import List from '@material-ui/core/List';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
@@ -43,11 +42,10 @@ export const TodoList: React.FC<Props> = ({initialTodos, toggleTodo}) => {
   return (
     <List dense className={classes.root}>
     {initialTodos.map((todo) => {
-      const labelId = `checkbox-list-secondary-label-${todo.text}`;
+      const labelId = `checkbox-list-secondary-label-${todo.todoText}`;
       return (
-        <ListItem key={todo.text} button>
-         
-          <ListItemText id={labelId} primary={`${todo.text}`} />
+        <ListItem key={todo.id} button>
+          <ListItemText id={labelId} primary={`${todo.todoText}`} />
           <ListItemSecondaryAction>
             <Checkbox
               edge="end"
