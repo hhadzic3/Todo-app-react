@@ -5,16 +5,30 @@ import { AddTodoForm } from './components/AddTodoForm';
 import ButtonAppBar from "./components/AppBar";
 import SignIn from "./components/Login";
 import SignUp from "./components/Register";
+import Box from '@material-ui/core/Box';
 
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import { Footer } from "./components/Footer";
 
 const initialTodos: Todo[] = [
   {
+    id:1,
     text: 'Walk the dog',
     complete: false,
   },
   {
+    id:2,
     text: 'Write app',
-    complete: true,
+    complete: false,
+  },
+  {
+    id:3,
+    text: 'Write apdvdvfdvp',
+    complete: false,
   }
 ];
 
@@ -37,19 +51,30 @@ function App() {
   };
 
   const addTodo: AddTodo = (text: string) => {
-    const newTodo = { text, complete: false };
+    const newTodo = {id: 6, text, complete: false };
     setTodos([...todos, newTodo]);
     console.log(todos);
   };
 
   return (
-    <>
-      <ButtonAppBar></ButtonAppBar>
-      <SignIn></SignIn>
-      <SignUp></SignUp>
-      <AddTodoForm addTodo={addTodo}></AddTodoForm>
-      <TodoList initialTodos={todos} toggleTodo={toggleTodo}></TodoList>
-    </>
+    <BrowserRouter>
+      <ButtonAppBar/>
+      <Routes>
+        <Route path="/" element={<SignIn></SignIn>} >
+          <Route path="/login" element={<SignIn></SignIn>}></Route>
+        </Route>
+
+        <Route path="register" element={<SignUp></SignUp> } />
+        
+      </Routes>
+        <AddTodoForm addTodo={addTodo}></AddTodoForm>
+        <div style={{display: 'flex', alignItems: 'center',justifyContent: 'center'}}>
+          <TodoList initialTodos={todos} toggleTodo={toggleTodo}></TodoList>
+        </div>
+      <Box mt={8}>
+        <Footer/>
+      </Box>
+    </BrowserRouter>
   );
 }
 
