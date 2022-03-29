@@ -48,10 +48,11 @@ export const login = (user: UserAddModel) => {
       password: user.password
     })
     .then(response => {
-        if(response.statusText == "OK")
-            localStorage.setItem('usertoken', response.data)
-        else alert("Error data!")
-      return response.data;
+      
+        if(response.request.statusText == "OK")
+            localStorage.setItem('token', response.data.token)
+        if(response.request.statusText != "OK") alert("Error data!")
+      return response.request;
     })
     .catch(err => {
       console.log(err)

@@ -23,10 +23,10 @@ export default function ButtonAppBar() {
   const history = useNavigate();
 
   function logOut() {
-    sessionStorage.setItem("userToken", '');
+    sessionStorage.setItem("token", '');
     sessionStorage.clear();
     //e.preventDefault()
-    localStorage.removeItem('usertoken')
+    localStorage.removeItem('token')
     history("/");
   }
 
@@ -51,7 +51,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Todo app
           </Typography>
-          {localStorage.usertoken ? userLink : loginRegLink}
+          {localStorage.token ? userLink : loginRegLink}
         </Toolbar>
       </AppBar>
     </div>

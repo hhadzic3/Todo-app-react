@@ -14,7 +14,7 @@ import Container from '@material-ui/core/Container';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../ApiService/ApiService'
 
-
+// TODO: Wich user is logged in and send that data to todo!!
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -40,6 +40,8 @@ export default function SignIn() {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [token, setToken] = useState(false);
+
   const history = useNavigate();
   
   return (
@@ -91,11 +93,14 @@ export default function SignIn() {
             className={classes.submit}
             onClick={(e) => { 
               e.preventDefault();
-              login({email: email , password: password}).then(res => {
+              login({email: email , password: password}).then((res: XMLHttpRequest) => {
+                console.log(res)
                 if (res.statusText == "OK"){
                   history("/todo");
+                  setToken(true);
                 }
-                else alert("Error data!")
+              }).catch(err => {
+                alert(err)
               })
                
               }}

@@ -14,6 +14,7 @@ import {
 import * as ApiService from './ApiService/ApiService'
 import { Footer } from "./components/Footer";
 
+// TODO: display todos from current user!!!!
 const initialTodos: Todo[] = [
   {
     id:1,
